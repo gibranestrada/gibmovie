@@ -1,8 +1,10 @@
 import React, { useReducer, useEffect } from "react";
+import "bootswatch/dist/flatly/bootstrap.min.css";
 import "../App.css";
 import Header from "./Header";
 import Movie from "./Movie";
 import Search from "./Search";
+import Axios from "axios";
 
 
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
@@ -47,13 +49,12 @@ const App = () => {
 
     useEffect(() => {
     
-        fetch(MOVIE_API_URL)
-            .then(response => response.json())
+        Axios(MOVIE_API_URL)
             .then(jsonResponse => {
         
             dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
+                payload: jsonResponse.data.Search
         	});
       	});
   	}, []);
@@ -63,13 +64,12 @@ const App = () => {
       	type: "SEARCH_MOVIES_REQUEST"
     	});
 	
-        fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
-      	.then(response => response.json())
+        Axios(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
       	.then(jsonResponse => {
-        	if (jsonResponse.Response === "True") {
+        	if (jsonResponse.data.Response === "True") {
           	dispatch({
                 type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.Search
+                payload: jsonResponse.data.Search
           	});
         	} else {
           	dispatch({

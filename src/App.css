@@ -1,18 +1,23 @@
+body{
+  background-color: black;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   height: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-weight: 800;
   color: white;
   padding: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .spinner {
@@ -53,6 +58,7 @@
 .movie {
   padding: 5px 25px 10px 25px;
   max-width: 25%;
+  color: white;
 }
 
 .errorMessage {
@@ -74,8 +80,8 @@
 input[type="submit"] {
   padding: 5px;
   background-color: transparent;
-  color: black;
-  border: 1px solid black;
+  color: white;
+  border: 1px solid white;
   width: 80px;
   margin-left: 5px;
   cursor: pointer;
@@ -83,8 +89,8 @@ input[type="submit"] {
 
 
 input[type="submit"]:hover {
-  background-color: #282c34;
-  color: antiquewhite;
+  background-color: color;
+  color: white;
 }
 
 
