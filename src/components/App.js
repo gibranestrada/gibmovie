@@ -7,7 +7,8 @@ import Search from "./Search";
 import Axios from "axios";
 
 
-const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/550?api_key=f15a4271a88c1dbd396b3452d871d926";
+const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?
+api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US&sort_by=popularity.desc&include_adult=false`;
 
 
 const initialState = {
@@ -52,7 +53,7 @@ const App = () => {
       .then(res => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
-          payload: [res.data]//removed Search
+          payload: [res.data.results]//removed Search
         });
       });
   }, []);
@@ -62,7 +63,8 @@ const App = () => {
       type: "SEARCH_MOVIES_REQUEST"
     });
 
-    Axios(`https://api.themoviedb.org/3/search/movie?api_key=f15a4271a88c1dbd396b3452d871d926&query=${searchValue}&language=en-US&page=1&include_adult=false`)
+    Axios(`https://api.themoviedb.org/3/search/movie?api_key=f15a4271a88c1dbd396b3452d871d926
+          &query=${searchValue}&language=en-US&page=1&include_adult=false`)
       .then(res => {
         if(res.data?.results){
           dispatch({
