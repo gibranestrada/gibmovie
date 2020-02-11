@@ -59,6 +59,11 @@ body{
 
 .mov{
   transition: transform .5s;
+  width: '18rem';
+  margin: '2rem';
+  height: '';
+  color: 'white';
+  cursor:'pointer';
 }
 .mov:hover{
   transform: scale(1.06);
