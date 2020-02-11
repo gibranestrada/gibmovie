@@ -39,6 +39,8 @@ body{
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .App-header h2 {
@@ -55,10 +57,11 @@ body{
   margin: 0 10px 30px 10px;
 }
 
-.movie {
-  padding: 5px 25px 10px 25px;
-  max-width: 25%;
-  color: white;
+.mov{
+  transition: transform .5s;
+}
+.mov:hover{
+  transform: scale(1.06);
 }
 
 .errorMessage {
@@ -97,24 +100,4 @@ input[type="submit"]:hover {
 .search > input[type="text"]{
   width: 40%;
   min-width: 170px;
-}
-
-@media screen and (min-width: 694px) and (max-width: 915px) {
-  .movie {
-    max-width: 33%;
-  }
-}
-
-@media screen and (min-width: 652px) and (max-width: 693px) {
-  .movie {
-    max-width: 50%;
-  }
-}
-
-
-@media screen and (max-width: 651px) {
-  .movie {
-    max-width: 100%;
-    margin: auto;
-  }
 }

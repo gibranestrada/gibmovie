@@ -7,7 +7,7 @@ import Search from "./Search";
 import Axios from "axios";
 
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b";
+const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/550?api_key=f15a4271a88c1dbd396b3452d871d926";
 
 
 const initialState = {
@@ -47,42 +47,45 @@ const reducer = (state, action) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-    useEffect(() => {
-    
-        Axios(MOVIE_API_URL)
-            .then(jsonResponse => {
-        
-            dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.data.Search
-        	});
-      	});
-  	}, []);
+  useEffect(() => {
+    Axios(MOVIE_API_URL)
+      .then(res => {
+        dispatch({
+          type: "SEARCH_MOVIES_SUCCESS",
+          payload: [res.data]//removed Search
+        });
+      });
+  }, []);
 
-    const search = searchValue => {
-    	dispatch({
-      	type: "SEARCH_MOVIES_REQUEST"
-    	});
-	
-        Axios(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
-      	.then(jsonResponse => {
-        	if (jsonResponse.data.Response === "True") {
-          	dispatch({
-                type: "SEARCH_MOVIES_SUCCESS",
-                payload: jsonResponse.data.Search
-          	});
-        	} else {
-          	dispatch({
-                type: "SEARCH_MOVIES_FAILURE",
-                error: jsonResponse.Error
-          	});
-          }
-      	});
-	  };
+  const search = searchValue => {
+    dispatch({
+      type: "SEARCH_MOVIES_REQUEST"
+    });
 
-    const { movies, errorMessage, loading } = state;
+    Axios(`https://api.themoviedb.org/3/search/movie?api_key=f15a4271a88c1dbd396b3452d871d926&query=${searchValue}&language=en-US&page=1&include_adult=false`)
+      .then(res => {
+        if(res.data?.results){
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload:  [res.data.results]//removed Search
+          });
+        }else if(!res.data?.results) {
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload:  [res.data]//removed Search
+          });
+        } else {
+          dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: res.Error
+          });
+        }
+      });
+  };
 
-    return (
+  const { movies, errorMessage, loading } = state;
+  console.log(movies)
+  return (
     <div className="App">
       <Header text="GIBMOVIE" />
       <Search search={search} />
@@ -92,11 +95,15 @@ const App = () => {
           <span>loading... </span>
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={movie} />
-          ))
-        )}
+        ) : !movies[0][0] ? ( 
+              movies.map((movie, index) => (
+                <Movie key={`${index}-${movie.title}`} movie={movie} />
+              )) 
+            ) : 
+            movies[0].map((movie, index) => (
+                <Movie key={`${index}-${movie.title}`} movie={movie} />
+              ))
+            }
       </div>
     </div>
   );
