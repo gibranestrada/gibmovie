@@ -38,6 +38,12 @@ const reducer = (state, action) => {
         loading: false,
         errorMessage: action.error
       };
+    case "SELECTED_MOVIE_REQUEST":
+        return{
+          ...state,
+          loading: true,
+          errorMessage: null
+        }
     default:
       return state;
   }
@@ -63,8 +69,7 @@ const App = () => {
       type: "SEARCH_MOVIES_REQUEST"
     });
 
-    Axios(`https://api.themoviedb.org/3/search/movie?api_key=f15a4271a88c1dbd396b3452d871d926
-          &query=${searchValue}&language=en-US&page=1&include_adult=false`)
+    Axios(`https://api.themoviedb.org/3/search/movie?api_key=f15a4271a88c1dbd396b3452d871d926&query=${searchValue}&language=en-US&page=1&include_adult=false`)
       .then(res => {
         if(res.data?.results){
           dispatch({
@@ -85,6 +90,33 @@ const App = () => {
       });
   };
 
+  const selectedMovie = mov => {
+    // dispatch({
+    //   type: "SELECTED_MOVIE_REQUEST"
+    // })
+    Axios(`https://api.themoviedb.org/3/movie/${mov}?api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US`)
+      .then(res => {
+        if(res.data?.results){
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload:  [res.data.results]//removed Search
+          });
+        }else if(!res.data?.results) {
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload:  [res.data]//removed Search
+          });
+        } else {
+          dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: res.Error
+          });
+        }
+      });
+
+
+  }
+
   const { movies, errorMessage, loading } = state;
   console.log(movies)
   return (
@@ -99,11 +131,11 @@ const App = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : !movies[0][0] ? ( 
               movies.map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} selectedMOvie={selectedMovie} movie={movie} />
               )) 
             ) : 
             movies[0].map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} selectedMovie={selectedMovie} movie={movie} />
               ))
             }
       </div>
