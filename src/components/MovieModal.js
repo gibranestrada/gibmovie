@@ -7,16 +7,17 @@ const MyVerticallyCenteredModal = (props) => {
     //props.moreInfo(props.mov.id);
     window.location.href=`https://www.imdb.com/title/${props.mov[0].imdb_id}`
   }
-  console.log(props.mov,'props mov')
+  
   if(!props.mov.length)return(<></>);
+  console.log(props.mov);
     return (
       <Modal
         {...props}
-        size="lg"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         className="modal-movie m-100"
-        style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${props.mov[0].backdrop_path})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
+        style={{backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${props.mov[0].backdrop_path})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
       >
         <Modal.Header closeButton style={{backgroundColor:'black', color:'white'}}>
           <Modal.Title className="text-center  w-100" id="contained-modal-title-vcenter" >
@@ -24,7 +25,7 @@ const MyVerticallyCenteredModal = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-white text-center" style={{backgroundColor: 'black', color: 'white'}}>
-         <Image src={`https://image.tmdb.org/t/p/w342/${props.mov[0].poster_path}`} fluid/>
+         <Image src={`https://image.tmdb.org/t/p/w185/${props.mov[0].poster_path}`} fluid/>
           <p>{props.mov[0].tagline}</p>
           <p>
             {props.mov[0].overview}

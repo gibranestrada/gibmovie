@@ -8,7 +8,7 @@ import Axios from "axios";
 
 
 const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?
-api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US&sort_by=popularity.desc&include_adult=false`;
+api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`;
 
 
 const initialState = {
@@ -42,7 +42,7 @@ const reducer = (state, action) => {
     case "SELECTED_MOVIE_REQUEST":
         return{
           ...state,
-          loading: false,
+         // loading: false,
         currentMovie: action.payload
         }
     default:

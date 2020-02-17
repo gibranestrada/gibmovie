@@ -9,12 +9,12 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 const Movie = ({ currentMovie, movie, selectedMovie }) => {
     const [modalShow, setModalShow] = React.useState(false);
     const poster =
-        !movie.poster_path ? DEFAULT_PLACEHOLDER_IMAGE : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+        !movie.poster_path ? DEFAULT_PLACEHOLDER_IMAGE : `https://image.tmdb.org/t/p/w342/${movie.poster_path}`;
  
     return (
         <>
         <Card className="mov" onClick={()=>{setModalShow(true); selectedMovie(movie.id)}} 
-            style={{ width: '18rem', margin: '2rem', backgroundColor: 'black', cursor:'pointer' }}>
+            style={{ width: '20rem', margin: '2rem', backgroundColor: 'black', cursor:'pointer' }}>
             <Card.Img variant="top" src={poster} alt={`The movie titled: ${movie.title}`} />
         </Card>
         <Modal show={modalShow} mov={currentMovie} onHide={() => setModalShow(false)}/>
