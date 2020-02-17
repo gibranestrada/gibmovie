@@ -14,6 +14,7 @@ api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US&sort_by=popularity.desc&
 const initialState = {
   loading: true,
   movies: [],
+  currentMovie: [],
   errorMessage: null
 };
 
@@ -41,8 +42,8 @@ const reducer = (state, action) => {
     case "SELECTED_MOVIE_REQUEST":
         return{
           ...state,
-          loading: true,
-          errorMessage: null
+          loading: false,
+        currentMovie: action.payload
         }
     default:
       return state;
@@ -98,12 +99,12 @@ const App = () => {
       .then(res => {
         if(res.data?.results){
           dispatch({
-            type: "SEARCH_MOVIES_SUCCESS",
+            type: "SELECTED_MOVIE_REQUEST",
             payload:  [res.data.results]//removed Search
           });
         }else if(!res.data?.results) {
           dispatch({
-            type: "SEARCH_MOVIES_SUCCESS",
+            type: "SELECTED_MOVIE_REQUEST",
             payload:  [res.data]//removed Search
           });
         } else {
@@ -117,7 +118,7 @@ const App = () => {
 
   }
 
-  const { movies, errorMessage, loading } = state;
+  const { movies, errorMessage, loading, currentMovie } = state;
   console.log(movies)
   return (
     <div className="App">
@@ -131,11 +132,11 @@ const App = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : !movies[0][0] ? ( 
               movies.map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} selectedMOvie={selectedMovie} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} currentMovie={currentMovie} selectedMOvie={selectedMovie} movie={movie} />
               )) 
             ) : 
             movies[0].map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} selectedMovie={selectedMovie} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} currentMovie={currentMovie}  selectedMovie={selectedMovie} movie={movie} />
               ))
             }
       </div>
