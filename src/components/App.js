@@ -5,6 +5,7 @@ import Header from "./Header";
 import Movie from "./Movie";
 import Search from "./Search";
 import Axios from "axios";
+import { Spinner } from "react-bootstrap";
 
 
 const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?
@@ -93,7 +94,7 @@ const App = () => {
 
   const selectedMovie = mov => {
     // dispatch({
-    //   type: "SELECTED_MOVIE_REQUEST"
+    //   type: "SEARCH_MOVIES_REQUEST"
     // })
     Axios(`https://api.themoviedb.org/3/movie/${mov}?api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US`)
       .then(res => {
@@ -124,10 +125,13 @@ const App = () => {
     <div className="App">
       <Header text="GIBMOVIE" />
       <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite movies</p>
+      <p className="App-intro text-white">Sharing a few of our favourite movies</p>
       <div className="movies">
         {loading && !errorMessage ? (
-          <span>loading... </span>
+          <>
+          <Spinner animation="border" variant="light" />
+          <span className="text-white" style={{fontSize: '2rem'}}> loading... </span>
+          </>
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : !movies[0][0] ? ( 

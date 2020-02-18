@@ -106,3 +106,6 @@ input[type="submit"]:hover {
   width: 40%;
   min-width: 170px;
 }
+.modal-button button{
+  margin: 10px;
+}

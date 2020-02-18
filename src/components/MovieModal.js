@@ -1,8 +1,17 @@
-import React from 'react';
-import { Modal, Button, Image } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Modal, Button, Image, Col, Spinner } from 'react-bootstrap';
 
 const MyVerticallyCenteredModal = (props) => {
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const closeButton = () => {
+    props.onHide();
+  }
   const moreInfoClicked = () => {
+    setButtonLoading(true);
+    //props.onHide();
+    // props.dispatch({
+    //   type: "SEARCH_MOVIES_REQUEST"
+    // })
     //props.onHide();
     //props.moreInfo(props.mov.id);
     window.location.href=`https://www.imdb.com/title/${props.mov[0].imdb_id}`
@@ -31,8 +40,19 @@ const MyVerticallyCenteredModal = (props) => {
             {props.mov[0].overview}
           </p>
         </Modal.Body>
-        <Modal.Footer style={{backgroundColor: 'black', color: 'white'}}>
-          <Button onClick={moreInfoClicked}>More Info</Button>
+        <Modal.Footer className="text-center" style={{backgroundColor: 'black', color: 'white'}}>
+        <Col className="modal-button">
+          <Button size="lg" onClick={closeButton}>Close</Button>
+          <Button size="lg" onClick={moreInfoClicked}>
+          {buttonLoading ? <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          /> : ''}
+           More Info</Button>
+        </Col>
         </Modal.Footer>
       </Modal>
     );

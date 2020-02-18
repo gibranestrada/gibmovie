@@ -6,7 +6,7 @@ const DEFAULT_PLACEHOLDER_IMAGE =
     "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
 
 
-const Movie = ({ currentMovie, movie, selectedMovie }) => {
+const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
     const [modalShow, setModalShow] = React.useState(false);
     const poster =
         !movie.poster_path ? DEFAULT_PLACEHOLDER_IMAGE : `https://image.tmdb.org/t/p/w342/${movie.poster_path}`;
