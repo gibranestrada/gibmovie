@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/gibmovie/static/css/main.4b5c55ff.chunk.css",
+    "main.js": "/gibmovie/static/js/main.ece96ffd.chunk.js",
+    "main.js.map": "/gibmovie/static/js/main.ece96ffd.chunk.js.map",
+    "runtime-main.js": "/gibmovie/static/js/runtime-main.ad2568b6.js",
+    "runtime-main.js.map": "/gibmovie/static/js/runtime-main.ad2568b6.js.map",
+    "static/css/2.510ddb82.chunk.css": "/gibmovie/static/css/2.510ddb82.chunk.css",
+    "static/js/2.c0741a3f.chunk.js": "/gibmovie/static/js/2.c0741a3f.chunk.js",
+    "static/js/2.c0741a3f.chunk.js.map": "/gibmovie/static/js/2.c0741a3f.chunk.js.map",
+    "index.html": "/gibmovie/index.html",
+    "precache-manifest.9a4cd8ee8b0735af954eb29aad27d11b.js": "/gibmovie/precache-manifest.9a4cd8ee8b0735af954eb29aad27d11b.js",
+    "service-worker.js": "/gibmovie/service-worker.js",
+    "static/css/2.510ddb82.chunk.css.map": "/gibmovie/static/css/2.510ddb82.chunk.css.map",
+    "static/css/main.4b5c55ff.chunk.css.map": "/gibmovie/static/css/main.4b5c55ff.chunk.css.map",
+    "static/js/2.c0741a3f.chunk.js.LICENSE.txt": "/gibmovie/static/js/2.c0741a3f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad2568b6.js",
+    "static/css/2.510ddb82.chunk.css",
+    "static/js/2.c0741a3f.chunk.js",
+    "static/css/main.4b5c55ff.chunk.css",
+    "static/js/main.ece96ffd.chunk.js"
+  ]
+}
