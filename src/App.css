@@ -17,7 +17,7 @@ body{
   font-weight: 800;
   color: white;
   padding: 20px;
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .spinner {
