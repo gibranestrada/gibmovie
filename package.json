@@ -1,6 +1,7 @@
 {
   "name": "gibmovie",
   "version": "0.1.0",
+  "homepage": "http://gibranestrada.github.io/gibmovie",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "react-bootstrap": "1.0.0-beta.16"
+    "react-bootstrap": "1.0.0-beta.16",
   },
   "eslintConfig": {
     "extends": "react-app"
