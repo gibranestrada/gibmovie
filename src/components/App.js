@@ -130,7 +130,7 @@ const App = () => {
         {loading && !errorMessage ? (
           <>
           <Spinner animation="border" variant="light" />
-          <span className="text-white" style={{fontSize: '2rem'}}> loading... </span>
+          <span className="text-white" style={{fontSize: '2rem'}}> Loading... </span>
           </>
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
