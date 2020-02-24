@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gibmovie/precache-manifest.79c7be4a5e0800a0a0651fb9753c4b65.js"
+  "/gibmovie/precache-manifest.bf2fb67363de80f90c6c9a73d1c1149a.js"
 );
 
 self.addEventListener('message', (event) => {
