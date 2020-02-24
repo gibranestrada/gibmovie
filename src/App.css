@@ -17,6 +17,9 @@ body{
   font-weight: 800;
   color: white;
   padding: 20px;
+}
+
+.App-header h2{
   cursor: pointer;
 }
 
@@ -70,42 +73,48 @@ body{
 }
 
 .errorMessage {
-  margin: auto;
-  font-weight: bold;
-  color: rgb(161, 15, 15);
+  font-size: 20px;
 }
 
 
 .search {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
   margin-top: 10px;
+  border-radius: 5px;
+}
+.is-invalid{
+  border: 3px solid;
+}
+.is-valid{
+  border: 3px solid;
 }
 
 
-input[type="submit"] {
+button[type="submit"] {
   padding: 5px;
   background-color: transparent;
   color: white;
-  border: 1px solid white;
+  font-weight: bold;
+  border: 2px solid white;
   width: 80px;
-  margin-left: 5px;
   cursor: pointer;
+  margin-left: 2px;
 }
 
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
   background-color: color;
   color: white;
 }
 
 
-.search > input[type="text"]{
+/* .search > input[type="text"]{
   width: 40%;
-  min-width: 170px;
-}
+  min-width: 180px;
+} */
 .modal-button button{
   margin: 10px;
 }

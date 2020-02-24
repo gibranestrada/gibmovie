@@ -7,7 +7,6 @@ import Search from "./Search";
 import Axios from "axios";
 import { Spinner } from "react-bootstrap";
 
-
 const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?
 api_key=f15a4271a88c1dbd396b3452d871d926&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`;
 

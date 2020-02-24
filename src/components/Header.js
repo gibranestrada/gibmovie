@@ -5,8 +5,8 @@ const Header = (props) => {
     window.location.reload();
   }
   return (
-    <header className="App-header" onClick={reloadPage}>
-      <h2>{props.text}</h2>
+    <header className="App-header">
+      <h2 onClick={reloadPage}>{props.text}</h2>
     </header>
   );
 };
