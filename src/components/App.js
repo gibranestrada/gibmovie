@@ -46,6 +46,12 @@ const reducer = (state, action) => {
          // loading: false,
         currentMovie: action.payload
         }
+        case "RESET_CURRENT_MOVIE":
+          return{
+            ...state,
+           // loading: false,
+          currentMovie: ''
+          }
     default:
       return state;
   }
@@ -136,11 +142,11 @@ const App = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : !movies[0][0] ? ( 
               movies.map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} currentMovie={currentMovie} selectedMOvie={selectedMovie} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} dispatch={dispatch} currentMovie={currentMovie} selectedMOvie={selectedMovie} movie={movie} />
               )) 
             ) : 
             movies[0].map((movie, index) => (
-                <Movie key={`${index}-${movie.title}`} currentMovie={currentMovie}  selectedMovie={selectedMovie} movie={movie} />
+                <Movie key={`${index}-${movie.title}`} dispatch={dispatch} currentMovie={currentMovie}  selectedMovie={selectedMovie} movie={movie} />
               ))
             }
       </div>
