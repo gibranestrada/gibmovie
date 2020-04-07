@@ -5,7 +5,7 @@ exports.handler = async (event, context, callback) => {
   const API_KEY=process.env.REACT_APP_API_KEY
     const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`;
     const movies = await Axios(MOVIE_API_URL)
-    pass(movies)
+        .then(res=>{pass(res)})
 //    let data = await response.json()
 //    await pass(data)
 //  } catch(err) {
