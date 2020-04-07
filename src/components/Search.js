@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import * as yup from 'yup';
-// import 'core-js/es6/promise';
-// import 'core-js/es6/set';
-// import 'core-js/es6/map';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap';
 
@@ -13,13 +10,6 @@ const schema = yup.object({
     .string().trim()
     .required("Please enter a movie title")
     .min(1, "Too short - please enter at least 1 character."),
-  // password: yup
-  //   .string()
-  //   .required("Please enter a password")
-  //   .min(4, "Too short - please enter at least 4 characters.")
-  // passwordConfirmation: yup
-  //   .string()
-  //   .oneOf([yup.ref("password"), null], "Passwords must match")
 });
 
 
@@ -44,7 +34,6 @@ const Search = (props) => {
 
   const callSearchFunction = () => {
     // e.preventDefault();
-    //console.log(e, 'e', data, 'data')
     const search = searchValue.trim();
 
     if (search.length) {
