@@ -6,7 +6,7 @@ import Movie from "./Movie";
 import Search from "./Search";
 import Axios from "axios";
 import { Spinner } from "react-bootstrap";
-
+require('dotenv').config()
 const API_KEY=process.env.REACT_APP_API_KEY
 const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`;
 
