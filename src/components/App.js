@@ -62,7 +62,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    Axios('../.netlify/functions/apiRequest')
+    Axios("../../.netlify/functions/apiRequest")
       .then(res => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
