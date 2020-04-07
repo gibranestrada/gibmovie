@@ -1,5 +1,5 @@
 const Axios = require('axios');
-
+require('dotenv').config()
 exports.handler = async (event, context, callback) => {
   const pass = (body) => {callback(null, {statusCode: 200, body: body})}
   const API_KEY=process.env.REACT_APP_API_KEY
