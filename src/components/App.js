@@ -6,8 +6,9 @@ import Movie from "./Movie";
 import Search from "./Search";
 import Axios from "axios";
 import { Spinner } from "react-bootstrap";
-// require('dotenv').config()
-const API_KEY = '';
+require('dotenv').config()
+
+const API_KEY = process.env.API_KEY;
 
 
 
