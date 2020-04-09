@@ -69,7 +69,8 @@ const App = () => {
           type: "SEARCH_MOVIES_SUCCESS",
           payload: [res.data.results]//removed Search
         });
-      });
+      })
+      .catch(e =>{console.log(e)})
   }, []);
 
   const search = searchValue => {
