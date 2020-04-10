@@ -7,18 +7,8 @@ exports.handler = async (event, context, callback) => {
   }
   const API_KEY=process.env.API_KEY
   const params = JSON.parse(event.body);
-  console.log(params, event.body )
   const MOVIE_API_URL = `${params.first}${API_KEY}${params.second}`;
     await Axios(MOVIE_API_URL)
         .then(res=>{pass(res.data)})
-        .catch(e=>{console.log(e, params, event.body)})
-//    let data = await response.json()
-//    await pass(data)
-//  } catch(err) {
-//      let error = {
-//        statusCode: err.statusCode || 500,
-//        body: JSON.stringify({error: err.message})
-//  }
-//   await pass(error)
- 
+        .catch(e=>{console.log(e)})
 }

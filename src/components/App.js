@@ -63,7 +63,8 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    Axios.post("../../.netlify/functions/apiRequest", {first: `https://api.themoviedb.org/3/discover/movie?api_key=`, second: `&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`})
+    Axios.post("../../.netlify/functions/apiRequest", 
+    {first: `https://api.themoviedb.org/3/discover/movie?api_key=`, second: `&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`})
       .then(res => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
@@ -78,7 +79,8 @@ const App = () => {
       type: "SEARCH_MOVIES_REQUEST"
     });
 
-    Axios(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchValue}&language=en-US&page=1&include_adult=false`)
+    Axios.post("../../.netlify/functions/apiRequest",
+    {first: `https://api.themoviedb.org/3/search/movie?api_key=`, second: `&query=${searchValue}&language=en-US&page=1&include_adult=false`})
       .then(res => {
         if(res.data?.results){
           dispatch({
@@ -103,7 +105,8 @@ const App = () => {
     // dispatch({
     //   type: "SEARCH_MOVIES_REQUEST"
     // })
-    Axios(`https://api.themoviedb.org/3/movie/${mov}?api_key=${API_KEY}&language=en-US`)
+    Axios.post("../../.netlify/functions/apiRequest", 
+    {frist: `https://api.themoviedb.org/3/movie/${mov}?api_key=`, second: `&language=en-US`})
       .then(res => {
         if(res.data?.results){
           dispatch({
