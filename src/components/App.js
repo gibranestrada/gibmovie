@@ -63,7 +63,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    Axios("../../.netlify/functions/apiRequest", {body: {first: `https://api.themoviedb.org/3/discover/movie?api_key=`, second: `&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`}})
+    Axios("../../.netlify/functions/apiRequest", {params: {first: `https://api.themoviedb.org/3/discover/movie?api_key=`, second: `&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`}})
       .then(res => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
