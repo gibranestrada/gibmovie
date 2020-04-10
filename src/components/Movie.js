@@ -24,7 +24,7 @@ const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
         <>
         <Card className="mov" onClick={()=>{setModalShow(true); selectedMovie(movie.id)}} 
             style={{ width: '20rem', margin: '2rem', backgroundColor: 'black', cursor:'pointer' }}>
-            <Card.Img className="lozad" variant="top" src={poster} alt={`The movie titled: ${movie.title}`} />
+            <Card.Img className="lozad" variant="top" data-src={poster} alt={`The movie titled: ${movie.title}`} />
         </Card>
         <Modal show={modalShow} mov={currentMovie} onHide={() => setModalShow(false)}/>
         </>
