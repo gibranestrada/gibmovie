@@ -13,8 +13,6 @@ const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
         const observer = lozad();
         observer.observe();
         if(!modalShow){
-            const observer = lozad();
-            observer.observe();
             dispatch({
                 type: 'RESET_CURRENT_MOVIE'
             })
