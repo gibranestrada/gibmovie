@@ -1,4 +1,5 @@
 const Axios = require('axios');
+const queryString = require('query-string');
 require('dotenv').config()
 exports.handler = async (event, context, callback) => {
   const pass = (body) => {callback(null, {statusCode: 200, body: JSON.stringify(body)})}
