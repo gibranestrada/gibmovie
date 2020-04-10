@@ -1,5 +1,4 @@
 const Axios = require('axios');
-const queryString = require('querystring');
 require('dotenv').config()
 exports.handler = async (event, context, callback) => {
   const pass = (body) => {callback(null, {statusCode: 200, body: JSON.stringify(body)})}
@@ -7,7 +6,7 @@ exports.handler = async (event, context, callback) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
   const API_KEY=process.env.API_KEY
-  const params = queryString.parse(event.body);
+  const params = JSON.parse(event.body);
   console.log(params, event.body )
   const MOVIE_API_URL = `${params.first}${API_KEY}${params.second}`;
     await Axios(MOVIE_API_URL)
