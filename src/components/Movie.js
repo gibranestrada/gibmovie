@@ -9,10 +9,12 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
     const [modalShow, setModalShow] = React.useState(false);
-    const observer = lozad();
-    observer.observe();
     useEffect(()=>{
+        const observer = lozad();
+        observer.observe();
         if(!modalShow){
+            const observer = lozad();
+            observer.observe();
             dispatch({
                 type: 'RESET_CURRENT_MOVIE'
             })
@@ -24,7 +26,7 @@ const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
         <>
         <Card className="mov" onClick={()=>{setModalShow(true); selectedMovie(movie.id)}} 
             style={{ width: '20rem', margin: '2rem', backgroundColor: 'black', cursor:'pointer' }}>
-            <Card.Img className="lozad" variant="top" data-src={poster} alt={`The movie titled: ${movie.title}`} />
+            <Card.Img className="lozad" variant="top" data-src={poster} alt={`The movie title: ${movie.title}`} />
         </Card>
         <Modal show={modalShow} mov={currentMovie} onHide={() => setModalShow(false)}/>
         </>
