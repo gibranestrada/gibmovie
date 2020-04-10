@@ -8,7 +8,7 @@ exports.handler = async (event, context, callback) => {
   }
   const API_KEY=process.env.API_KEY
   const params = queryString.parse(event.body);
-  const MOVIE_API_URL = `${params.first}${API_KEY}${params.second}`;
+  const MOVIE_API_URL = `${params.params.first}${API_KEY}${params.params.second}`;
     await Axios(MOVIE_API_URL)
         .then(res=>{pass(res.data)})
         .catch(e=>{console.log(e)})
