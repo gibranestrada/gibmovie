@@ -18,7 +18,6 @@ const MyVerticallyCenteredModal = (props) => {
   }
   
   if(!props.mov.length)return(<></>);
-  console.log(props.mov);
     return (
       <Modal
         {...props}

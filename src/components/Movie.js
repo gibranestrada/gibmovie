@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { Card } from 'react-bootstrap';
 import Modal from './MovieModal';
+import lozad from 'lozad';
 
 const DEFAULT_PLACEHOLDER_IMAGE =
     "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
@@ -8,6 +9,8 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
     const [modalShow, setModalShow] = React.useState(false);
+    const observer = lozad();
+    observer.observe();
     useEffect(()=>{
         if(!modalShow){
             dispatch({
@@ -21,7 +24,7 @@ const Movie = ({ currentMovie, movie, selectedMovie, dispatch }) => {
         <>
         <Card className="mov" onClick={()=>{setModalShow(true); selectedMovie(movie.id)}} 
             style={{ width: '20rem', margin: '2rem', backgroundColor: 'black', cursor:'pointer' }}>
-            <Card.Img variant="top" src={poster} alt={`The movie titled: ${movie.title}`} />
+            <Card.Img className="lozad" variant="top" src={poster} alt={`The movie titled: ${movie.title}`} />
         </Card>
         <Modal show={modalShow} mov={currentMovie} onHide={() => setModalShow(false)}/>
         </>

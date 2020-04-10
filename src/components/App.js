@@ -106,7 +106,7 @@ const App = () => {
     //   type: "SEARCH_MOVIES_REQUEST"
     // })
     Axios.post("../../.netlify/functions/apiRequest", 
-    {frist: `https://api.themoviedb.org/3/movie/${mov}?api_key=`, second: `&language=en-US`})
+    {first: `https://api.themoviedb.org/3/movie/${mov}?api_key=`, second: `&language=en-US`})
       .then(res => {
         if(res.data?.results){
           dispatch({
