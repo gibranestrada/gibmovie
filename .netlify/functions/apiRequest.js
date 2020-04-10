@@ -1,5 +1,5 @@
 const Axios = require('axios');
-const queryString = require('query-string');
+const queryString = require('querystring');
 require('dotenv').config()
 exports.handler = async (event, context, callback) => {
   const pass = (body) => {callback(null, {statusCode: 200, body: JSON.stringify(body)})}
@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
   const MOVIE_API_URL = `${params.first}${API_KEY}${params.second}`;
     await Axios(MOVIE_API_URL)
         .then(res=>{pass(res.data)})
-        .catch(e=>{console.log(e)})
+        .catch(e=>{console.log(e, params, event.body)})
 //    let data = await response.json()
 //    await pass(data)
 //  } catch(err) {
